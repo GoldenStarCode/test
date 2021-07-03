@@ -235,7 +235,7 @@ Default (unsigned feature mapping):
    >>> fm[1] # Vectorized form of trajectory2 under curve2vec feature mapping
    array([7.07106781e-01, 2.82842712e+00, 3.14018492e-16])
 
-When version='signed' and sigma is given:
+When ``version='signed'`` and sigma is given:
 
 .. code-block:: python
 
@@ -248,7 +248,7 @@ When version='signed' and sigma is given:
    >>> signfm[1] # Vectorized form of trajectory2 under curve2vec feature mapping
    array([-3.12009772e-01,  1.91392993e-01, -1.57009246e-16])
 
-In both signed and unsigned versions setting segIndx=True will return an array of dictionaries: 
+In both signed and unsigned versions setting ``segIndx=True`` will return an array of dictionaries: 
 
 .. code-block:: python
 
@@ -267,7 +267,7 @@ In both signed and unsigned versions setting segIndx=True will return an array o
    >>> segindxfms[1]
    {'UnsignedCurve2Vec': array([7.07106781e-01, 2.82842712e+00, 3.14018492e-16]), 'SelectedSegmentsIndex': array([12,  5, 12], dtype=int64)}
 
-Also, setting argMinPnts=True will return argmin points selected by landmarks:
+Also, setting ``argMinPnts=True`` will return argmin points selected by landmarks:
 
 .. code-block:: python
 
@@ -506,7 +506,7 @@ In signed version the trajectory will be drawn in a directed form. As mentioned 
 trjtrypy.visualizations.colorcoding
 ===================================
 
-trjtrypy.visualizations.colorcoding(vectorizedfunc, trajectory, zoom=None, dpi=50, fgsize=(10,10))
+trjtrypy.visualizations.colorcoding(vectorizedfunc, trajectory, zoom=None, dpi=50, figsize=(10,10))
 
    Color code the feature mapping functions.
    
@@ -519,7 +519,7 @@ trjtrypy.visualizations.colorcoding(vectorizedfunc, trajectory, zoom=None, dpi=5
          Zoom out/in in a fixed figure size.
       * **dpi: int, default=50** \
          Specifies the resolution of the figure.
-      * **fgsize: tuple of integers, default=(10, 10)** \
+      * **figsize: tuple of integers, default=(10, 10)** \
          Specifies width and height of the figure.
    * **Returns**   
          The color-coded visualization of the specified feature mapping.
@@ -686,6 +686,3 @@ Citation
 ********
 
 If you found this package or information helpful, please cite above references.
-
-
-
