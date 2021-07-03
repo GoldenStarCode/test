@@ -584,7 +584,7 @@ Figure 4:
 trjtrypy.distsbase.DistsBase
 ============================
 
-.. [i] 
+.. [i] The minimum distance between a point and any (complicated) piecewise linear curve:
 
 .. code-block:: python
 
@@ -602,7 +602,7 @@ trjtrypy.distsbase.DistsBase
    
 
 
-.. [ii]
+.. [ii] The minimum distance of a set of points from a curve simultaneously:
 
 .. code-block:: python
 
@@ -622,7 +622,7 @@ trjtrypy.distsbase.DistsBase
                                        #                7.07106781e-01, 5.00000000e-01, 5.00000000e-01, 7.07106781e-01])
 
 
-.. [iii]
+.. [iii] The minimum distance of a point/set of points from a line segment:
 
 .. code-block:: python
 
@@ -686,3 +686,4 @@ Citation
 ********
 
 If you found this package or information helpful, please cite above references.
+
