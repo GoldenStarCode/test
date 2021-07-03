@@ -81,10 +81,10 @@ colorcoding function in this package does this job.
 By taking the advantage of DistsBase class one can compute the followings:
 
 
-5.1. `The minimum distance between a point and any (complicated) piecewise linear curve.`
+5.1. The minimum distance between a point and any (complicated) piecewise linear curve
 #########################################################################################
 
-Usage: See [i]_
+Usage: See [i]_.
 
 Example: 
 
@@ -92,10 +92,10 @@ Example:
 
 Note: The figure is drawn by *draw_landmarks_trajectory* function of this package.
 
-5.2. `The minimum distance of a set of points from a curve simultaneously.`
+5.2. The minimum distance of a set of points from a curve simultaneously
 ###########################################################################
 
-Usage: See [ii]_
+Usage: See [ii]_.
 
 Example: 
 
@@ -103,10 +103,10 @@ Example:
 
 Note: The figure is drawn by *draw_landmarks_trajectory* function of this package.
 
-5.3. `The minimum distance of a point/set of points from a line segment.`
+5.3. The minimum distance of a point/set of points from a line segment
 #########################################################################
 
-Usage: See [iii]_
+Usage: See [iii]_.
 
 Examples: 
 
@@ -118,12 +118,12 @@ Note: The figures are drawn by *draw_landmarks_trajectory* function of this pack
 
 Also, this class helps in calculating:
 
-5.4. `Closest curve from a set of curves to a given set of points.`
+5.4. Closest curve from a set of curves to a given set of points
 ###################################################################
 
 This is achievable by considering a cost function like the least mean square cost.
 
-5.5. The minimum distance between a set of points and a curve.
+5.5. The minimum distance between a set of points and a curve
 ##############################################################
 
 This is not equivelent to the part 5.2 But one can do as part 5.2 then take minimum.
@@ -679,5 +679,13 @@ Citation
 ********
 
 If you found this package or information helpful, please cite above references.
+
+
+
+
+
+
+
+
 
 
