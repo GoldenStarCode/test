@@ -75,8 +75,8 @@ Visaulizing the feature mappings in terms of color-coding.
 colorcoding function in this package does this job.
 
 
-5. Curves and points distances
-==============================
+5. Curves, points and distances
+===============================
 
 By taking the advantage of DistsBase class one can compute the followings:
 
@@ -84,36 +84,36 @@ By taking the advantage of DistsBase class one can compute the followings:
 5.1. `The minimum distance between a point and any (complicated) piecewise linear curve.`
 #########################################################################################
 
-Usage: [i]_
+Usage: See [i]_
 
 Example: 
 
-.. image:: point_curve.jpeg
+.. image:: images/point_curve.jpeg
 
-(figure was drawn by *draw_landmarks_trajectory* function of this package)
+Note: The figure is drawn by *draw_landmarks_trajectory* function of this package.
 
 5.2. `The minimum distance of a set of points from a curve simultaneously.`
 ###########################################################################
 
-Usage: [ii]_
+Usage: See [ii]_
 
 Example: 
 
-.. image:: points_curve.jpeg
+.. image:: images/points_curve.jpeg
 
-(figure was drawn by *draw_landmarks_trajectory* function of this package)
+Note: The figure is drawn by *draw_landmarks_trajectory* function of this package.
 
 5.3. `The minimum distance of a point/set of points from a line segment.`
 #########################################################################
 
-Usage: [iii]_
+Usage: See [iii]_
 
 Examples: 
 
-.. image:: point_linesegment.jpeg
-.. image:: points_linesegment.jpeg
+.. image:: images/point_linesegment.jpeg
+.. image:: images/points_linesegment.jpeg
 
-(figures were drawn by *draw_landmarks_trajectory* function of this package)
+Note: The figures are drawn by *draw_landmarks_trajectory* function of this package.
 
 
 Also, this class helps in calculating:
@@ -129,49 +129,42 @@ This is achievable by considering a cost function like the least mean square cos
 This is not equivelent to the part 5.2 But one can do as part 5.2 then take minimum.
 
 
-
 **The signed version of all above functionalities are also available in this class, but note that this version is impelemented according to the signed feature mapping introduced in** [2]_. \ 
 **To get actual signed distance values (not affected by Gaussian weight in the definition of signed feature mapping in** [2]_ **) one can use a very large sigma value (like 10000) and then multiply the output value form APntSetSignedDistACrv with the selected sigma.**
-
-
-
-
 
 
 
 Installation
 ************
 
-**Requirments**
+
+First of all make sure that you have already installed Python from https://www.python.org. Then to install this package:
 
 **With pip**
 
-Install using pip: 
+Do as follow:
 
 .. code-block::
 
-   pip install trjtrypy
+   $ pip install trjtrypy
 
 **With git**
 
-First clone the project repository:
+Do as follows:
 
 .. code-block::
 
-   git clone ....
-
-Then run the following command in the directory of the project:
-
-.. code-block::
-
-   python setup.py install
+   $ git clone ....
+   $ cd trjtrpy
+   $ python setup.py install
 
 
 
 
 
-Usage
-*****
+
+Documentation
+*************
 
 trjtrypy.featureMapping.curve2vec
 =================================
@@ -297,12 +290,12 @@ Also, setting ``argMinPnts=True`` will return argmin points selected by landmark
 
 Figure 1:
 
-.. image:: detailtraj1.jpg
+.. image:: images/detailtraj1.jpg
 
 
 Figure 2:
 
-.. image:: detailtraj2.jpg
+.. image:: images/detailtraj2.jpg
 
 
 A combination of above functionalities can also be used:
@@ -484,7 +477,7 @@ trjtrpy.visualizations.draw_landmarks_trajectory(landmarks, trajectory, version=
 
    >>> tt.visualizations.draw_landmarks_trajectory(landmarks,trajectory,version='unsigned',trj=True,lndmarks=True,dists=True,argminpnts=True,zoom=None,figsize=(5,10))
    
-.. image:: traj2.jpg
+.. image:: images/traj2.jpg
         :width: 600px
         :height: 500px
 
@@ -494,7 +487,7 @@ In signed version the trajectory will be drawn in a directed form. As mentioned 
 
    >>>  tt.visualizations.draw_landmarks_trajectory(landmarks,trajectory,version='signed',trj=True,lndmarks=True,dists=True,argminpnts=True,zoom=None,figsize=(10,10))
    
-.. image:: traj2direct.jpg
+.. image:: images/traj2direct.jpg
   :width: 600px
   :height: 500px        
 
@@ -546,7 +539,7 @@ Color-coding of the unsigned version of the feature mappping:
 Figure 3:
 (With radio buttons one can choose the type of colormap)
 
-.. image:: colorcodeunsigned.jpg
+.. image:: images/colorcodeunsigned.jpg
    :width: 600px
    :height: 300px     
 
@@ -570,7 +563,7 @@ Color-coding of the signed version of the feature mappping:
 
 Figure 4:
 
-.. image:: colorcodesigned.jpg
+.. image:: images/colorcodesigned.jpg
    :width: 600px
    :height: 300px
 
@@ -686,4 +679,5 @@ Citation
 ********
 
 If you found this package or information helpful, please cite above references.
+
 
