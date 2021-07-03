@@ -24,8 +24,8 @@ Overview
 ********
 More details for understanding the functionality of the package: 
 
-Feature mapping used in calculating d_Q
-========================================
+1. Feature mapping used in calculating d_Q
+==========================================
 
 
 First, using a landmark set Q, an orientation-non-perserving (unsigned version) feature mapping, taken from [1]_, is provided to convert a trajectory to a vector of length \|Q|\.
@@ -38,8 +38,8 @@ In this package these functionalities can be accessed by the implemented curve2v
 
 
 
-d_Q distance of two trajcetories
-=================================
+2. d_Q distance of two trajcetories
+===================================
    
 The d_Q distance of two trajectories is the normalized Euclidean distance between two vectorized trajectories via above feature mappings.
 
@@ -48,60 +48,92 @@ In this package this functionality is given by d_Q function.
 
 
 
-d_pi_Q distance of two trajcetories
-====================================
+3. d_pi_Q distance of two trajcetories
+=======================================
   
 This is the normalized l^p-distance of the associated argmin points on trajectories obtained by landmarks Q.
 
 In this package this is provided by d_pi_Q function.
 
 
-Visualizations
-===============
+4. Visualizations
+=================
 
    
-Drawing landmarks and trajectories
-###################################
+4.1. Drawing landmarks and trajectories
+#######################################
 
 Visaulizing landmarks, trajectories and distances between landmarks and the given trajectory.
 
 draw_landmarks_curve function in this package does this job.
 
-Color-coding
-#############################################################################
+4.2. Color-coding
+#################
 
 Visaulizing the feature mappings in terms of color-coding.
 
 colorcoding function in this package does this job.
 
 
-Curves and distance of a point from a curve
-============================================
+5. Curves and points distances
+==============================
 
 By taking the advantage of DistsBase class one can compute the followings:
 
 
-1. [The minimum distance between a point and any (complicated) piecewise linear curve.]_
- 
-The minimum distance of a set of points from a curve simultaneously.
+5.1. `The minimum distance between a point and any (complicated) piecewise linear curve.`
+#########################################################################################
 
-The minimum distance of a point/set of points from a line segment.
+Usage: [i]_
+
+Example: 
+
+.. image:: point_curve.jpeg
+
+(figure was drawn by *draw_landmarks_trajectory* function of this package)
+
+5.2. `The minimum distance of a set of points from a curve simultaneously.`
+###########################################################################
+
+Usage: [ii]_
+
+Example: 
+
+.. image:: points_curve.jpeg
+
+(figure was drawn by *draw_landmarks_trajectory* function of this package)
+
+5.3. `The minimum distance of a point/set of points from a line segment.`
+#########################################################################
+
+Usage: [iii]_
+
+Examples: 
+
+.. image:: point_linesegment.jpeg
+.. image:: points_linesegment.jpeg
+
+(figures were drawn by *draw_landmarks_trajectory* function of this package)
 
 
-Also, it helps in calculating:
+Also, this class helps in calculating:
 
-Closest curve from a set of curves to a given set of points by considering a cost function like the least mean square cost.
+5.4. `Closest curve from a set of curves to a given set of points.`
+###################################################################
 
-The minimum distance between a set of points and a curve. 
+This is achievable by considering a cost function like the least mean square cost.
 
-The signed version of all above functionalities are also available in this package, but note that this version is impelemented according to the signed feature mapping introduced in [2]_. \ 
- To get actual signed distance values (not affected by Gaussian weight in the definition of signed feature mapping in [2]_) one can use a very large sigma value (like 10000) and then multiply the output value form APntSetSignedDistACrv with the selected sigma.
+5.5. The minimum distance between a set of points and a curve.
+##############################################################
+
+This is not equivelent to the part 5.2 But one can do as part 5.2 then take minimum.
 
 
 
-All can be accessible in DistsBase class by functions APntSetDistACrv for unsigned and APntSetSignedDistACrv for signed distance.
+**The signed version of all above functionalities are also available in this class, but note that this version is impelemented according to the signed feature mapping introduced in** [2]_. \ 
+**To get actual signed distance values (not affected by Gaussian weight in the definition of signed feature mapping in** [2]_ **) one can use a very large sigma value (like 10000) and then multiply the output value form APntSetSignedDistACrv with the selected sigma.**
 
-Also, if it is needed, one can get access to implicit computation details by class structure and functionalities.
+
 
 
 
@@ -110,8 +142,9 @@ Also, if it is needed, one can get access to implicit computation details by cla
 Installation
 ************
 
-With pip
-=========
+**Requirments**
+
+**With pip**
 
 Install using pip: 
 
@@ -119,16 +152,15 @@ Install using pip:
 
    pip install trjtrypy
 
-With git
-=========
+**With git**
 
-First clone project repository:
+First clone the project repository:
 
 .. code-block::
 
    git clone ....
 
-Then run following command in the directory of project:
+Then run the following command in the directory of the project:
 
 .. code-block::
 
@@ -186,7 +218,7 @@ trjtrypy.featureMapping.curve2vec(landmarks, trajectories, version='unsigned', s
 .. code-block:: python
 
    >>> trajectory1 = np.array([[0,0], [2,2], [5,-1], [7,0]])
-   >>> trajectory2 = np.array([[1,1], [2,2], [4,-2], [4,0]])
+   >>> trajectory2 = np.array([[-2,2], [-1,2], [-2,1], [-1,0], [-1,1], [0,2], [1,1], [0,1], [0,0], [0,-1], [0,-2], [-1,-1], [1,-1], [2,0]])
    >>> trajectories = np.array([trajectory1, trajectory2]) # or [trajectory1, trajectory2]
    >>> landmarks = np.array([[2,-1], [3,3], [2,0]]) # or [[2,-1], [3,3], [2,0]]
 
@@ -196,12 +228,12 @@ Default (unsigned feature mapping):
 
    >>> fms = tt.featureMapping.curve2vec(landmarks, trajectories)
    >>> fms # An array containing unsigned feature mapping of trajectories
-   array([[2.12132034, 1.41421356, 1.41421356],
-       [1.34164079, 1.41421356, 0.89442719]])
+   array([[2.12132034e+00, 1.41421356e+00, 1.41421356e+00],
+       [7.07106781e-01, 2.82842712e+00, 3.14018492e-16]])
    >>> fm[0] # Vectorized form of trajectory1 under curve2vec feature mapping
-   array([2.12132034, 1.41421356, 1.41421356])
+   array([2.12132034e+00, 1.41421356e+00, 1.41421356e+00])
    >>> fm[1] # Vectorized form of trajectory2 under curve2vec feature mapping
-   array([1.34164079, 1.41421356, 0.89442719])
+   array([7.07106781e-01, 2.82842712e+00, 3.14018492e-16])
 
 When version='signed' and sigma is given:
 
@@ -209,12 +241,12 @@ When version='signed' and sigma is given:
 
    >>> signfms = tt.featureMapping.curve2vec(landmarks, trajectories, version='signed', sigma=2)
    >>> signfms # An array containing signed feature mapping of trajectories
-   array([[-0.34434594,  0.42888194, -0.42888194],
-       [-0.42773397,  0.42888194, -0.36614752]])
+   array([[-3.44345942e-01,  4.28881942e-01, -4.28881942e-01],
+       [-3.12009772e-01,  1.91392993e-01, -1.57009246e-16]])
    >>> signfm[0] # Vectorized form of trajectory1 under curve2vec feature mapping
-   array([-0.34434594,  0.42888194, -0.42888194])
+   array([-3.44345942e-01,  4.28881942e-01, -4.28881942e-01])
    >>> signfm[1] # Vectorized form of trajectory2 under curve2vec feature mapping
-   array([-0.42773397,  0.42888194, -0.36614752])
+   array([-3.12009772e-01,  1.91392993e-01, -1.57009246e-16])
 
 In both signed and unsigned versions setting segIndx=True will return an array of dictionaries: 
 
@@ -222,8 +254,8 @@ In both signed and unsigned versions setting segIndx=True will return an array o
 
    >>> segindxfms = tt.featureMapping.curve2vec(landmarks, trajectories, segIndx=True)
    >>> segindxfms # See figure 1 and figure 2 
-   array([{'UnsignedCurve2Vec': array([2.12132034, 1.41421356, 1.41421356]), 'SelectedSegmentsIndex': array([0, 0, 0])},
-       {'UnsignedCurve2Vec': array([1.34164079, 1.41421356, 0.89442719]), 'SelectedSegmentsIndex': array([1, 0, 1])}],
+   array([{'UnsignedCurve2Vec': array([2.12132034, 1.41421356, 1.41421356]), 'SelectedSegmentsIndex': array([0, 0, 0], dtype=int64)},
+       {'UnsignedCurve2Vec': array([7.07106781e-01, 2.82842712e+00, 3.14018492e-16]), 'SelectedSegmentsIndex': array([12,  5, 12], dtype=int64)}],
       dtype=object)
    >>> segindxfms[0] # See figure 1
    {'SelectedSegmentsIndex': array([0, 0, 0]),
@@ -233,8 +265,7 @@ In both signed and unsigned versions setting segIndx=True will return an array o
    >>> segindxfms[0]['UnsignedCurve2Vec']  # Output determines landmarks unsigned distances from trajectory1. As an example, first landmark unsigned distance from trajectory1 is 2.12132034.
    array([2.12132034, 1.41421356, 1.41421356])
    >>> segindxfms[1]
-   {'SelectedSegmentsIndex': array([1, 0, 1]),
-   'UnsignedCurve2Vec': array([1.34164079, 1.41421356, 0.89442719])}
+   {'UnsignedCurve2Vec': array([7.07106781e-01, 2.82842712e+00, 3.14018492e-16]), 'SelectedSegmentsIndex': array([12,  5, 12], dtype=int64)}
 
 Also, setting argMinPnts=True will return argmin points selected by landmarks:
 
@@ -245,9 +276,9 @@ Also, setting argMinPnts=True will return argmin points selected by landmarks:
    array([{'UnsignedCurve2Vec': array([2.12132034, 1.41421356, 1.41421356]), 'ArgMinPoints': array([[0.5, 0.5],
        [2. , 2. ],
        [1. , 1. ]])},
-       {'UnsignedCurve2Vec': array([1.34164079, 1.41421356, 0.89442719]), 'ArgMinPoints': array([[ 3.2, -0.4],
-       [ 2. ,  2. ],
-       [ 2.8,  0.4]])}], dtype=object)
+       {'UnsignedCurve2Vec': array([7.07106781e-01, 2.82842712e+00, 3.14018492e-16]), 'ArgMinPoints': array([[ 1.50000000e+00, -5.00000000e-01],
+       [ 1.00000000e+00,  1.00000000e+00],
+       [ 2.00000000e+00, -2.22044605e-16]])}], dtype=object)
    >>> argminfms[0] # See figure 1
    {'ArgMinPoints': array([[0.5, 0.5],
         [2. , 2. ],
@@ -260,10 +291,9 @@ Also, setting argMinPnts=True will return argmin points selected by landmarks:
    >>> argminfms[0]['UnsignedCurve2Vec']  # Output determines landmarks unsigned distances from trajectory1. As an example, first landmark unsigned distance from trajectory1 is 2.12132034.
    array([2.12132034, 1.41421356, 1.41421356])
    >>> argminfms[1]
-   {'ArgMinPoints': array([[ 3.2, -0.4],
-        [ 2. ,  2. ],
-        [ 2.8,  0.4]]),
-   'UnsignedCurve2Vec': array([1.34164079, 1.41421356, 0.89442719])}
+   {'UnsignedCurve2Vec': array([7.07106781e-01, 2.82842712e+00, 3.14018492e-16]), 'ArgMinPoints': array([[ 1.50000000e+00, -5.00000000e-01],
+       [ 1.00000000e+00,  1.00000000e+00],
+       [ 2.00000000e+00, -2.22044605e-16]])}
 
 Figure 1:
 
@@ -280,19 +310,19 @@ A combination of above functionalities can also be used:
 .. code-block:: python
 
    >>> tt.featureMapping.curve2vec(landmarks, trajectories, segIndx=True, argMinPnts=True)
-   array([{'UnsignedCurve2Vec': array([2.12132034, 1.41421356, 1.41421356]), 'SelectedSegmentsIndex': array([0, 0, 0]), 'ArgMinPoints': array([[0.5, 0.5],
+   array([{'UnsignedCurve2Vec': array([2.12132034, 1.41421356, 1.41421356]), 'SelectedSegmentsIndex': array([0, 0, 0], dtype=int64), 'ArgMinPoints': array([[0.5, 0.5],
        [2. , 2. ],
        [1. , 1. ]])},
-       {'UnsignedCurve2Vec': array([1.34164079, 1.41421356, 0.89442719]), 'SelectedSegmentsIndex': array([1, 0, 1]), 'ArgMinPoints': array([[ 3.2, -0.4],
-       [ 2. ,  2. ],
-       [ 2.8,  0.4]])}], dtype=object)
+       {'UnsignedCurve2Vec': array([7.07106781e-01, 2.82842712e+00, 3.14018492e-16]), 'SelectedSegmentsIndex': array([12,  5, 12], dtype=int64), 'ArgMinPoints': array([[ 1.50000000e+00, -5.00000000e-01],
+       [ 1.00000000e+00,  1.00000000e+00],
+       [ 2.00000000e+00, -2.22044605e-16]])}], dtype=object)
    >>> tt.featureMapping.curve2vec(landmarks, trajectories, version='signed', sigma=0.9, segIndx=True, argMinPnts=True)
-   array([{'SignedCurve2Vec': array([-0.00911206,  0.1330272 , -0.1330272 ]), 'SelectedSegmentsIndex': array([0, 0, 0]), 'ArgMinPoints': array([[0.5, 0.5],
+   array([{'SignedCurve2Vec': array([-0.00911206,  0.1330272 , -0.1330272 ]), 'SelectedSegmentsIndex': array([0, 0, 0], dtype=int64), 'ArgMinPoints': array([[0.5, 0.5],
        [2. , 2. ],
        [1. , 1. ]])},
-       {'SignedCurve2Vec': array([-0.16154551,  0.1330272 , -0.3701431 ]), 'SelectedSegmentsIndex': array([1, 0, 1]), 'ArgMinPoints': array([[ 3.2, -0.4],
-       [ 2. ,  2. ],
-       [ 2.8,  0.4]])}], dtype=object)
+       {'SignedCurve2Vec': array([-4.23798562e-01,  1.61426291e-04, -3.48909435e-16]), 'SelectedSegmentsIndex': array([12,  5, 12], dtype=int64), 'ArgMinPoints': array([[ 1.50000000e+00, -5.00000000e-01],
+       [ 1.00000000e+00,  1.00000000e+00],
+       [ 2.00000000e+00, -2.22044605e-16]])}], dtype=object)
 
 
 
@@ -304,7 +334,6 @@ trjtrypy.distances.d_Q(landmarks, trajectory1, trajectory2, usedfm='unsigned', s
    Calculating d_Q distance of two trajectories.
       
    * **Parameters**
-      
       * **landmarks:  List or numpy array of shape (n, 2)** \ 
                      Coordinates of landmarks in the plane.
       
@@ -364,7 +393,6 @@ trjtrypy.distances.d_pi_Q(landmarks, trajectory1, trajectory2, p=1)
    Calculating d_pi_Q distance between two trajectories.
 
    * **Parameters**
-         
       * **landmarks:  List or numpy array of shape (n, 2)** \ 
          Coordinates of landmarks in the plane.
 
@@ -411,29 +439,28 @@ trjtrypy.distances.d_pi_Q(landmarks, trajectory1, trajectory2, p=1)
 trjtrypy.visualizations.draw_landmarks_trajectory
 =================================================
 
-trjtrpy.visualizations.draw_landmarks_trajectory(landmarks, trajectory, version='unsigned', crv=True, lndmarks=True, dists=True, distpnts=True, zoom=None, fgsize=(10,10))
+trjtrpy.visualizations.draw_landmarks_trajectory(landmarks, trajectory, version='unsigned', trj=True, lndmarks=True, dists=True, argminpnts=True, zoom=None, figsize=(10,10))
 
    Draws trajectory and landmarks.
 
    * **Parameters**
-      
       * **landmarks:  List or numpy array of shape (n, 2)** \ 
          Coordinates of landmarks in the plane.
       * **trajectory: Numpy array of shape (m, 2)** \
          Coordinates of waypoints of trajectory.
       * **version: {'signed', 'unsigned'}, default='unsigned'** \
          Specifies the version of the feature mapping.
-      * **crv: bool (True, False), default='True'** \
-           When crv=False, the function will not draw the trajcetory.
+      * **trj: bool (True, False), default='True'** \
+           When trj=False, the function will not draw the trajcetory.
       * **lndmarks: bool (True, False), default='True'** \
            When lndmarks=False, the function will not draw the landmarks.
       * **dists: bool (True, False), default = 'True'** \
            When dists=False, the function will not draw distances.
-      * **distpnts: bool (True, False), default='True'** \
-           When distpnts=False, the function will not draw argmin points.
+      * **argminpnts: bool (True, False), default='True'** \
+           When argminpnts=False, the function will not draw argmin points.
       * **zoom: float, default=None** \
            Zoom out/in in a fixed figure size.
-      * **fgsize: tuple of integers, default=(10, 10)** \
+      * **figsize: tuple of integers, default=(10, 10)** \
             Specifies width and height of the figure size.
             
    * **Returns** 
@@ -449,15 +476,13 @@ trjtrpy.visualizations.draw_landmarks_trajectory(landmarks, trajectory, version=
 
 .. code-block:: python
 
-   >>> trajectory1 = np.array([[0,0], [2,2], [5,-1], [7,0]])
-   >>> trajectory2 = np.array([[1,1], [2,2], [4,-2], [4,0]])
-   >>> trajectories = np.array([trajectory1, trajectory2]) # [trajectory1, trajectory2]
-   >>> landmarks = np.array([[1,0], [.5,1.3], [2,-1], [3,3], [2,0], [4.1,1], [3.90,1.1]]) # or [[1,0], [.5,1.3], [2,-1], [3,3], [2,0], [4.1,1], [3.90,1.1]]
+   >>> trajectory = np.array([[-2,2], [-1,2], [-2,1], [-1,0], [-1,1], [0,2], [1,1], [0,1], [0,0], [0,-1], [0,-2], [-1,-1], [1,-1], [2,0]])
+   >>> landmarks = np.array([[-2.5,1.5], [-2.5,2], [-2.5,2.5], [-2,0], [-1.5,1], [-1.5,2.5], [-0.5,-0.5], [-0.5,0.5], [-0.5,1], [0,1.5], [0.5,-0.5], [0.5,1.5], [2,-1], [2,0.5], [2.5,0], [2.5,0.5]]) # or [[-2.5,1.5], [-2.5,2], [-2.5,2.5], [-2,0], [-1.5,1], [-1.5,2.5], [-0.5,-0.5], [-0.5,0.5], [-0.5,1], [0,1.5], [0.5,-0.5], [0.5,1.5], [2,-1], [2,0.5], [2.5,0], [2.5,0.5]]
 
 
 .. code-block:: python
 
-   >>> tt.visualizations.draw_landmarks_curve(landmarks,trajectory2,version='unsigned',crv=True,lndmarks=True,dists=True,distpnts=True,zoom=None,fgsize=(10,10))
+   >>> tt.visualizations.draw_landmarks_trajectory(landmarks,trajectory,version='unsigned',trj=True,lndmarks=True,dists=True,argminpnts=True,zoom=None,figsize=(5,10))
    
 .. image:: traj2.jpg
         :width: 600px
@@ -467,7 +492,7 @@ In signed version the trajectory will be drawn in a directed form. As mentioned 
 
 .. code-block:: python
 
-   >>>  tt.visualizations.draw_landmarks_curve(landmarks,curve,version='signed',crv=True,lndmarks=True,dists=True,distpnts=True,zoom=None,fgsize=(10,10))
+   >>>  tt.visualizations.draw_landmarks_trajectory(landmarks,trajectory,version='signed',trj=True,lndmarks=True,dists=True,argminpnts=True,zoom=None,figsize=(10,10))
    
 .. image:: traj2direct.jpg
   :width: 600px
@@ -486,7 +511,6 @@ trjtrypy.visualizations.colorcoding(vectorizedfunc, trajectory, zoom=None, dpi=5
    Color code the feature mapping functions.
    
    * **Parameters**
-
       * **vectorizedfunc: vectorized function** \
          Vectorized feature mapping function.
       * **trajectory: Numpy array of shape (m, 2)** \
@@ -557,56 +581,75 @@ Figure 4:
 
 
 
-trjtrypy.distsbase
-==================
+trjtrypy.distsbase.DistsBase
+============================
 
-This class provide facilities for followings:
-
-signed/unsigned distance of a point from a line segment.
-
-
+.. [i] 
 
 .. code-block:: python
 
    import numpy as np
    from trjtrypy.distsbase import DistsBase
 
+
+   # define a point
+   apoint=np.array([[-0.5, -0.5]])
+   # define a curve
+   curve=np.array([[-2,2], [-1,2], [-2,1], [-1,0], [-1,1], [0,2], [1,1], [0,1], [0,0], [0,-1], [0,-2], [-1,-1], [1,-1], [2,0]])
+
+   d=DistsBase()
+   d.APntSetDistACrv(apoint, curve) # returns array([0.5])
    
 
-   
-   # create an object from DistsBase class
-   d = DistsBase()
 
-   
+.. [ii]
 
-   # for calcullating each of followings:
-   # 1. signed distance of a point from a line segment.
-   # 2. signed distance of a set of points from a line segment.
-   # 3. signed distance of set of point from a piece-wise linear curve.
-   #
-   #
-   # For first one, one can suppose a point like point = [[x1,y1]] and a line segment like 
-   # linesegment = np.array( [ [x of start of line segment, y of start of line segment ],[x of end of line segment, y of end of line segment] ] )
-   # then by using d.APntSetDistACrv(point, linesegment), distance (unsigned distance) of point from the line segment will be computed
-   # and d.APntSetSignedDistACrv(point, linesegment) give signed distance, means it computes distance and ascertains position of point respect to line segment.
-   #
-   #
-   # For second, suppose a set of point like points = [[x1,y1], [x2,y2], [x3,y3], [x4,y4]] and a line segment like 
-   # linesegment = np.array( [ [x of start of line segment, y of start of line segment ],[x of end of line segment, y of end of line segment] ] )
-   # then by using d.APntSetDistACrv(points, linesegment), distance (unsigned distance) of points from the line segment will be computed
-   # and d.APntSetSignedDistACrv(points, linesegment) give signed distances, means it computes distance and ascertains position of each point respect to line segment.
-   #
-   # For third, consider following example:
-   
-   points = [[2,-1], [3,3], [2,0]]
-   
-   curve1 = np.array([[0,0], [2,2], [5,-1], [7,0]])
+.. code-block:: python
 
-   d.APntSetDistACrv(points, curve1) # array([2.12132034, 1.41421356, 1.41421356])
+   import numpy as np
+   from trjtrypy.distsbase import DistsBase
 
-   d.APntSetDistACrv(points, curve1, InUse=True) # In this option, fucntion returns above resualt and maintain respected computation details
-   
-   d.APntSetDistACrv(points, curve1) # array([-0.02356574,  0.19139299, -0.19139299])
+
+   # define a set of points
+   setpoints=np.array([[-2.5,1.5], [-2.5,2], [-2.5,2.5], [-2,0], [-1.5,1], [-1.5,2.5], [-0.5,-0.5], [-0.5,0.5], [-0.5,1], [0,1.5], [0.5,-0.5], [0.5,1.5], [2,-1], [2,0.5], [2.5,0], [2.5,0.5]])
+   # define a curve
+   curve=np.array([[-2,2], [-1,2], [-2,1], [-1,0], [-1,1], [0,2], [1,1], [0,1], [0,0], [0,-1], [0,-2], [-1,-1], [1,-1], [2,0]])
+
+   d=DistsBase()
+   d.APntSetDistACrv(setpoints, curve) # returns array([7.07106781e-01, 5.00000000e-01, 7.07106781e-01, 7.07106781e-01,
+                                       #                3.53553391e-01, 5.00000000e-01, 5.00000000e-01, 5.00000000e-01,
+                                       #                3.53553391e-01, 3.53553391e-01, 5.00000000e-01, 1.57009246e-16,
+                                       #                7.07106781e-01, 5.00000000e-01, 5.00000000e-01, 7.07106781e-01])
+
+
+.. [iii]
+
+.. code-block:: python
+
+   import numpy as np
+   from trjtrypy.distsbase import DistsBase
+
+
+   # define a point
+   apoint=np.array([[-0.5, -0.5]])
+   # define a line segment
+   linesegment=np.array([[1,-1], [2,0]])
+
+   d=DistsBase()
+   d.APntSetDistACrv(apoint, linesegment) # returns array([4.24264069])
+
+
+
+
+   #define a set of points
+   setpoints=np.array([[-2.5,1.5], [-2.5,2], [-2.5,2.5], [-2,0], [-1.5,1], [-1.5,2.5], [-0.5,-0.5], [-0.5,0.5], [-0.5,1], [0,1.5], [0.5,-0.5], [0.5,1.5], [2,-1], [2,0.5], [2.5,0], [2.5,0.5]])
+   linesegment=np.array([[1,-1], [2,0]])
+
+   d.APntSetDistACrv(setpoints, linesegment) # returns array([4.30116263 4.60977223 4.94974747 3.16227766 3.20156212 4.24264069
+                                             #                1.58113883 2.12132034 2.47487373 2.47487373 0.70710678 2.12132034
+                                             #                0.70710678 0.5        0.5        0.70710678]) 
+
+
 
 
 
@@ -616,13 +659,13 @@ signed/unsigned distance of a point from a line segment.
 Further applications
 ********************
 
-Application for curves
-======================
+1. Application for curves
+==========================
 One can approximate any continues function via trajectories with a sufficent accuracy
 and then apply this package functionalities for curves.
 
-Application for two dimentional times series
-============================================
+2. Application for two dimentional times series
+===============================================
 By connecting consecutive points in a 2d times series one can make a trajectory in order 
 to use this package functionalities.
 
@@ -643,7 +686,6 @@ Citation
 ********
 
 If you found this package or information helpful, please cite above references.
-
 
 
 
