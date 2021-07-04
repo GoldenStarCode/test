@@ -215,7 +215,7 @@ trjtrypy.featureMapping.curve2vec(landmarks, trajectories, version='unsigned', s
 
    >>> trajectory1 = np.array([[0,0], [2,2], [5,-1], [7,0]])
    >>> trajectory2 = np.array([[-2,2], [-1,2], [-2,1], [-1,0], [-1,1], [0,2], [1,1], [0,1], [0,0], [0,-1], [0,-2], [-1,-1], [1,-1], [2,0]])
-   >>> trajectories = np.array([trajectory1, trajectory2]) # or [trajectory1, trajectory2]
+   >>> trajectories = np.array([trajectory1, trajectory2], dtype=object) # or [trajectory1, trajectory2]
    >>> landmarks = np.array([[2,-1], [3,3], [2,0]]) # or [[2,-1], [3,3], [2,0]]
 
 Default (unsigned feature mapping):
@@ -294,8 +294,7 @@ Also, setting ``argMinPnts=True`` will return argmin points selected by landmark
 Figure 1:
 
 .. image:: images/detailtraj1.jpg
-   :width: 600px
-   :height: 350px
+   :height: 450px
 
 
 Figure 2:
@@ -367,7 +366,7 @@ trjtrypy.distances.d_Q(landmarks, trajectory1, trajectory2, usedfm='unsigned', s
 
    >>> trajectory1 = np.array([[0,0], [2,2], [5,-1], [7,0]])
    >>> trajectory2 = np.array([[1,1], [2,2], [4,-2], [4,0]])
-   >>> trajectories = np.array([trajectory1, trajectory2]) # or [trajectory1, trajectory2]
+   >>> trajectories = np.array([trajectory1, trajectory2], dtype=object) # or [trajectory1, trajectory2]
    >>> landmarks = np.array([[2,-1], [3,3], [2,0]]) # or [[2,-1], [3,3], [2,0]]
 
 
@@ -421,7 +420,7 @@ trjtrypy.distances.d_pi_Q(landmarks, trajectory1, trajectory2, p=1)
 
    >>> trajectory1 = np.array([[0,0], [2,2], [5,-1], [7,0]])
    >>> trajectory2 = np.array([[1,1], [2,2], [4,-2], [4,0]])
-   >>> trajectories = np.array([trajectory1, trajectory2]) # or [trajectory1, trajectory2]
+   >>> trajectories = np.array([trajectory1, trajectory2], dtype=object) # or [trajectory1, trajectory2]
    >>> landmarks = np.array([[2,-1], [3,3], [2,0]]) # or [[2,-1], [3,3], [2,0]]
 
 .. code-block:: python
