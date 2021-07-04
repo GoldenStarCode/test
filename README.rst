@@ -1,10 +1,14 @@
-|PyPI license|   |Documentation Status|
+|PyPI license|  |Documentation Status|
+
+# PR welcome, test passing, issues github page, build failing, ask me any think, pypi package version
 
 .. |PyPI license| image:: https://img.shields.io/pypi/l/ansicolortags.svg
    :target: https://pypi.python.org/pypi/ansicolortags/
 
 .. |Documentation Status| image:: https://readthedocs.org/projects/ansicolortags/badge/?version=latest
       :target: http://ansicolortags.readthedocs.io/?badge=latest
+
+
 
 .. contents:: Table of Contents
   :depth: 7
@@ -130,8 +134,7 @@ This is not equivelent to the part 5.2 But one can do as part 5.2 then take mini
 
 
 **The signed version of all above functionalities are also available in this class, but note that this version is impelemented according to the signed feature mapping introduced in** [2]_. \ 
-**To get actual signed distance values (not affected by Gaussian weight in the definition of signed feature mapping in** [2]_ **) one can use a very large sigma value (like 10000) and then multiply the output value form APntSetSignedDistACrv with the selected sigma.**
-
+**To get actual signed distances one can calculate both signed and unsigned versions' values and then get the desired values by multiplying the sign of values from signed version by the values from unsigned version.**
 
 
 Installation
