@@ -294,6 +294,8 @@ Also, setting ``argMinPnts=True`` will return argmin points selected by landmark
 Figure 1:
 
 .. image:: images/detailtraj1.jpg
+   :width: 600px
+   :height: 350px
 
 
 Figure 2:
