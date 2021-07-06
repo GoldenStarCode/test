@@ -110,14 +110,14 @@ Installation
 First of all make sure that you have already installed Python from https://www.python.org. Then to install this package:
 
 
-* **With pip**
+**With pip**
 
 
 .. code-block::
 
    $ pip install trjtrypy
 
-* **With git**
+**With git**
 
 
 .. code-block::
