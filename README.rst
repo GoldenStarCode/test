@@ -1,7 +1,3 @@
-
-
-
-
 .. contents:: Table of Contents
    :depth: 7
 
@@ -25,14 +21,14 @@ Second, using a landmark set Q and a positive parameter sigma, an orientation-pe
 
 In this package these functionalities can be accessed by the implemented curve2vec function.
 
-2. d_Q distance of two trajcetories
+2. d_Q distance of two trajecetories
 =====================================
    
 The d_Q distance of two trajectories is the normalized Euclidean distance between two vectorized trajectories via above feature mappings.
 
 In this package this functionality is given by d_Q function.
 
-3. d_Q_pi distance of two trajcetories
+3. d_Q_pi distance of two trajectories
 =========================================
   
 This is the normalized l^p-distance of the associated argmin points on trajectories obtained by landmarks Q.
@@ -61,8 +57,8 @@ colorcoding function in this package does this job.
 
 By taking the advantage of DistsBase class one can compute the followings:
 
-5.1. The minimum distance between a point and any (complicated) piecewise linear curve
-#########################################################################################
+5.1. The minimum distance between a point and any (complicated) piecewise linear curve/curves
+##############################################################################################
 
 Usage: See [i]_.
 
@@ -72,8 +68,8 @@ Example:
 
 Note: The figure is drawn by *draw_landmarks_trajectory* function of this package.
 
-5.2. The minimum distance of a set of points from a curve simultaneously
-###########################################################################
+5.2. The minimum distance of all points in a set of points from a curve/curves simultaneously
+##############################################################################################
 
 Usage: See [ii]_.
 
@@ -84,7 +80,7 @@ Example:
 Note: The figure is drawn by *draw_landmarks_trajectory* function of this package.
 
 5.3. The minimum distance of a point/set of points from a line segment
-#########################################################################
+#######################################################################
 
 Usage: See [iii]_.
 
@@ -97,15 +93,15 @@ Note: The figures are drawn by *draw_landmarks_trajectory* function of this pack
 
 Also, this class helps in calculating:
 
-5.4. Closest curve from a set of curves to a given set of points
-###################################################################
+5.4. The closest curve from a set of curves to a given set of points
+#####################################################################
 
 This is achievable by considering a cost function like the least mean square cost.
 
 5.5. The minimum distance between a set of points and a curve
 ##############################################################
 
-This is not equivelent to the part 5.2 But one can do as part 5.2 then take minimum.
+This is not equivalent to the part 5.2 But one can do as part 5.2 then take minimum.
 
 
 Installation
@@ -115,7 +111,7 @@ First of all make sure that you have already installed Python from https://www.p
 
 **With pip**
 
-Do as follow:
+Just run the following line of code:
 
 .. code-block::
 
@@ -123,7 +119,7 @@ Do as follow:
 
 **With git**
 
-Do as follows:
+Run the following lines: 
 
 .. code-block::
 
@@ -151,7 +147,7 @@ trjtrypy.featureMappings.curve2vec(landmarks, trajectories, version='unsigned', 
                   Determines which version of the feature mappings is utilized.
 
          * **sigma: float, default=1**\
-                  A positve real number specifying the Gaussian weight parameter employed 
+                  A positive real number specifying the Gaussian weight parameter employed 
                   in the definition of the signed feature mapping. So, it will be
                   effective only when version='signed'.
 
@@ -170,8 +166,8 @@ trjtrypy.featureMappings.curve2vec(landmarks, trajectories, version='unsigned', 
 
 **Remark**
 
-Notice that when version='signed', the trajectories passed into the function must be semi-simple (i.e., countably many self crossings are allowed).
-However, the code will be run for any trajectory but it will possibly assigne an incorrect sign to the values.
+Notice that when ``version='signed'``, the trajectories passed into the function must be semi-simple (i.e., countably many self crossings are allowed).
+However, the code will be run for any trajectory but it will possibly assign an incorrect sign to the values.
 
 **Examples**
 
@@ -310,7 +306,7 @@ trjtrypy.distances.d_Q(landmarks, trajectory1, trajectory2, version='unsigned', 
                      Determines which version of the feature mappings is utilized.
 
          * **sigma: float, default=1**\
-                     A positve real number specifying the Gaussian weight parameter
+                     A positive real number specifying the Gaussian weight parameter
                      employed in the definition of the signed distance. So, it will
                      be effective only when version='signed'.
 
@@ -342,7 +338,7 @@ trjtrypy.distances.d_Q(landmarks, trajectory1, trajectory2, version='unsigned', 
    0.641559854784373
    >>> tt.distances.d_Q(landmarks, trajectory1, trajectory2, version='signed', sigma=0.1) # Using signed version of the feature mapping in computation (sigma is needed in this version).
    9.320212490006313e-35
-   >>> tt.distances.d_Q(landmarks, trajectory1, trajectory2, version='signed', sigma=0.1, p=float('inf')) # Using infinity-norm for calculating distacne of two trajectories.
+   >>> tt.distances.d_Q(landmarks, trajectory1, trajectory2, version='signed', sigma=0.1, p=float('inf')) # Using infinity-norm for calculating distance of two trajectories.
    1.614308157002897e-34
 
 trjtrypy.distances.d_Q_pi
@@ -353,7 +349,7 @@ trjtrypy.distances.d_Q_pi(landmarks, trajectory1, trajectory2, p=1)
    related reference is computed. 
 
    * **Parameters**        
-         * **andmarks: ndarray of shape (len(landmarks), 2)**\
+         * **landmarks: ndarray of shape (len(landmarks), 2)**\
                        An array containing coordinates of landmarks in each row. 
                   
          * **trajectory1: ndarray of shape (len(trajectory1), 2)**\
@@ -450,7 +446,7 @@ trjtrypy.visualizations.draw_landmarks_trajectory(landmarks, trajectory, version
 
 .. code-block:: python
 
-   >>> tt.visualizations.draw_landmarks_trajectory(landmarks,trajectory,version='unsigned',trj=True,lndmarks=True,dists=True,argminpnts=True,zoom=None,figsize=(5,10))
+   >>> tt.visualizations.draw_landmarks_trajectory(landmarks, trajectory, version='unsigned', trj=True, lndmarks=True, dists=True, argminpnts=True, zoom=None, figsize=(5,10))
    
 .. image:: https://github.com/GoldenStarCode/tmg/blob/main/traj2.jpg?raw=true
          :width: 600px
@@ -471,7 +467,7 @@ trjtrypy.visualizations.colorcoding
 trjtrypy.visualizations.colorcoding(vectorizedfunc, trajectory, version='unsigned', zoom=None, dpi=50, figsize=(10,10))
 
    Visualizing the specified feature mapping by color considering every point 
-   on a rectangular region, that includs the trajectory, as a potential landmark. 
+   on a rectangular region, that includes the trajectory, as a potential landmark. 
 
    * **Parameters**        
       * **vectorizedfunc: A vectorized function**\
@@ -491,7 +487,7 @@ trjtrypy.visualizations.colorcoding(vectorizedfunc, trajectory, version='unsigne
                    A positive float number which determines zooming in or out in 
                    a fixed figure size.
 
-      * **dpi: int, defult=50**\
+      * **dpi: int, default=50**\
                    Specifies the resolution of the figure.
 
       * **figsize: tuple**
@@ -503,7 +499,7 @@ trjtrypy.visualizations.colorcoding(vectorizedfunc, trajectory, version='unsigne
 
 **Examples**
 
-Color-coding of the unsigned version of the feature mappping:
+Color-coding of the unsigned version of the feature mapping:
 
 .. code-block:: python
 
@@ -524,7 +520,7 @@ Figure 3:
 
 .. image:: https://github.com/GoldenStarCode/tmg/blob/main/colorcodeunsigned.jpeg?raw=true
 
-Color-coding of the signed version of the feature mappping:
+Color-coding of the signed version of the feature mapping:
 
 .. code-block:: python
 
@@ -562,7 +558,7 @@ distance(points, curves, version='unsigned', segIndx=False, argPnts=False)
                              Notice n can be different for each curve.
                              
       * **version: str ('unsigned', 'signed'), default='unsigned'**\
-                             Determines unsigned or signed distacne that is going
+                             Determines unsigned or signed distance that is going
                              to be computed.
                              
       * **segIndx: bool (True, False), default=False**
@@ -585,13 +581,11 @@ distance(points, curves, version='unsigned', segIndx=False, argPnts=False)
 
 **Remark**
 
-1. Note that the signed version implemented here is diffrent from the signed vesion used 
-in curve2vec feature mapping. Indeed, the signed distance that is computed by distance 
-function here is unsigned distance value with sign according to the right hand rule considering 
-the orientation of the curve.
+* Note that the signed version implemented here is different from the signed version used in curve2vec feature mapping. Indeed, the signed distance that is computed by distance function here is unsigned distance value with sign according to the right hand rule considering the orientation of the curve.
 
-2. Signed version of this function will gives zero for points that can't be signed by right hand rule. 
-    For an example assume curve [ [0,0], [1,1] ] and point [-1,-1], then the result in signed version is 0. 
+
+
+* Signed version of this function will give zero for points that their sign cannot be determined by the right hand rule. As an example consider the curve [ [0,0], [1,1] ] and point [-1,-1]. Then the value of the signed version is 0.
 
 **Examples**
 
@@ -610,7 +604,7 @@ The minimum distance between a point and any (complicated) piecewise linear curv
    # define a curve
    curve=np.array([[-2,2], [-1,2], [-2,1], [-1,0], [-1,1], [0,2], [1,1], [0,1], [0,0], [0,-1], [0,-2], [-1,-1], [1,-1], [2,0]])
 
-   # make apoint and curve suitable for distance function as inputs
+   # make apoint and curve appropriate for distance function as inputs
    points=apoint
    curves=np.array([curve], dtype=object)
 
@@ -635,7 +629,7 @@ The minimum distance between a point and any (complicated) piecewise linear curv
    # define curve2
    curve2=np.array([[0,0], [2,2], [5,-1], [7,0]])
 
-   # make apoint and curve1 and curve2 suitable for distance function as inputs
+   # make apoint, curve1 and curve2 appropriate for distance function as inputs
    points=apoint
    curves=np.array([curve1, curve2], dtype=object)
 
@@ -647,9 +641,9 @@ The minimum distance between a point and any (complicated) piecewise linear curv
    tt.basedists.distacne(points, curves, version='signed') # returns array([[-0.5],
                                                            #                [ 0. ]]) this is zero because point [-0.5,-0.5] is positioned at the direction of the first segment of curve2
 
-.. [ii] The minimum distance of a set of points from a curve/curves simultaneously:
+.. [ii] The minimum distance of all points in a set of points from a curve/curves simultaneously:
 
-The minimum distance of a set of points from a curve simultaneously:
+The minimum distance of all points in a set of points from a curve simultaneously:
 
 .. code-block:: python
 
@@ -663,7 +657,7 @@ The minimum distance of a set of points from a curve simultaneously:
    curve=np.array([[-2,2], [-1,2], [-2,1], [-1,0], [-1,1], [0,2], [1,1], [0,1], [0,0], [0,-1], [0,-2], [-1,-1], [1,-1], [2,0]])
 
 
-   # make setpoints and curve suitable for distance function as inputs
+   # make setpoints and curve usable for distance function as inputs
    points=setpoints
    curves=np.array([curve], dtype=object)
 
@@ -681,7 +675,7 @@ The minimum distance of a set of points from a curve simultaneously:
                                                            #                 -7.07106781e-01,  5.00000000e-01, -5.00000000e-01,
                                                            #                  0.00000000e+00]])
 
-The minimum distance of a set of points from curves simultaneously:
+The minimum distance of all points in a set of points from curves simultaneously:
 
 .. code-block:: python
 
@@ -696,7 +690,7 @@ The minimum distance of a set of points from curves simultaneously:
    # define curve2
    curve2=np.array([[0,0], [2,2], [5,-1], [7,0]])
 
-   # make setpoints, curve1 and curve2 suitable for distance function as inputs
+   # make setpoints, curve1 and curve2 appropriate for distance function as inputs
    points=setpoints
    curves=np.array([curve1, curve2], dtype=object)
 
@@ -739,7 +733,7 @@ The minimum distance of a point from a line segment:
    # define a line segment
    linesegment = np.array([[1,-1], [2,0]])
 
-   # make apoint and linesegment suitable for distance function as inputs
+   # make apoint and linesegment appropriate for distance function as inputs
    points = apoint
    curves = np.array([linesegment], dtype=object)
 
@@ -765,7 +759,7 @@ The minimum distance of a set of points from a line segment:
    # define a line segment
    linesegment = np.array([[[1,-1], [2,0]]])
 
-   # make setpoints and linesegment suitable for distance function as inputs
+   # make setpoints and linesegment applicable for distance function as inputs
    points = setpoints
    curves = linesegment
 
@@ -792,10 +786,9 @@ Further applications
 
 1. Application for curves
 ============================
-One can approximate any continues function via trajectories with a sufficent accuracy
-and then apply this package functionalities for curves.
+One can approximate any continuous curve via trajectories with a sufficient accuracy, then apply this package functionalities for the resulted approximate version of the curve.
 
-2. Application for two dimentional times series
+2. Application for two dimensional times series
 =================================================
 By connecting consecutive points in a 2d times series one can make a trajectory in order 
 to use this package functionalities.
