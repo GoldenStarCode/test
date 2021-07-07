@@ -4,7 +4,9 @@
 .. contents:: Table of Contents
    :depth: 7
 
-
+.. math:: e^{i\pi} + 1 = 0
+   :label: euler
+   
 Introduction
 ************
 In this package three landmark-based distances and their 
