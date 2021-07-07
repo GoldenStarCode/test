@@ -4,10 +4,6 @@
 .. contents:: Table of Contents
    :depth: 7
 
-.. math:: e^{i\pi} + 1 = 0
-   :label: euler
-   
-:eq: `euler`
 
 Introduction
 ************
@@ -62,7 +58,7 @@ colorcoding function in this package does this job.
 5. Curves, points and distances
 =================================
 
-By taking the advantage of DistsBase class one can compute the followings:
+By taking the advantage of distance funcion one can compute the followings:
 
 5.1. The minimum distance between a point and any (complicated) piecewise linear curve/curves
 ##############################################################################################
@@ -74,6 +70,11 @@ Example:
 .. image:: https://github.com/GoldenStarCode/tmg/blob/main/point_curve.jpeg?raw=true
 
 Note: The figure is drawn by *draw_landmarks_trajectory* function of this package.
+
+**Remark**
+
+Notice argmin points are chosen by the smallest index if there is a tie.
+
 
 5.2. The minimum distance of all points in a set of points from a curve/curves simultaneously
 ##############################################################################################
