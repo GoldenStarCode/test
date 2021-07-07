@@ -34,7 +34,7 @@ In this package this functionality is given by d_Q function.
 3. d_Q_pi distance of two trajectories
 =========================================
   
-This is the normalized l^p-distance of the associated argmin points on trajectories obtained by landmarks Q.
+This is the normalized l^p :math:`l^p`-distance of the associated argmin points on trajectories obtained by landmarks Q.
 
 In this package this is provided by d_Q_pi function.
 
