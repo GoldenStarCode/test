@@ -1,5 +1,11 @@
 
-is :math:`A_\text{c} = (\pi/4) d^2`
+.. math::
+   :nowrap:
+
+   \begin{eqnarray}
+      y    & = & ax^2 + bx + c \nonumber\\
+      f(x) & = & x^2 + 2xy + y^2\nonumber
+   \end{eqnarray}
 
 .. contents:: Table of Contents
    :depth: 7
