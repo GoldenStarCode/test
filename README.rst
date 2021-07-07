@@ -1,5 +1,5 @@
 
- is :math:`A_\text{c} = (\pi/4) d^2`
+is :math:`A_\text{c} = (\pi/4) d^2`
 
 .. contents:: Table of Contents
    :depth: 7
