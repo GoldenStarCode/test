@@ -1,6 +1,7 @@
-                                                                                    ========
-                                                                                    trjtrypy
-                                                                                    ========
+============
+**trjtrypy**
+============
+
 
 .. contents:: Table of Contents
    :depth: 7
@@ -35,7 +36,7 @@ In this package this functionality is given by d_Q function.
 3. d_Q_pi distance of two trajectories
 =========================================
   
-This is the normalized l^p :math:`l^{p}`-distance of the associated argmin points on trajectories obtained by landmarks Q.
+This is the normalized l^p-distance of the associated argmin points on trajectories obtained by landmarks Q.
 
 In this package this is provided by d_Q_pi function.
 
@@ -59,7 +60,7 @@ colorcoding function in this package does this job.
 5. Curves, points and distances
 =================================
 
-By taking the advantage of distance funcion one can compute the followings:
+By taking the advantage of distance funcion in this package one can compute the followings:
 
 5.1. The minimum distance between a point and any (complicated) piecewise linear curve/curves
 ##############################################################################################
