@@ -71,9 +71,7 @@ Example:
 
 Note: The figure is drawn by *draw_landmarks_trajectory* function of this package.
 
-**Remark**
-
-Notice argmin points are chosen by the smallest index if there is a tie.
+Remark: Notice argmin points are chosen by the smallest index if there is a tie.
 
 
 5.2. The minimum distance of all points in a set of points from a curve/curves simultaneously
