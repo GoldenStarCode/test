@@ -7,6 +7,8 @@
 .. math:: e^{i\pi} + 1 = 0
    :label: euler
    
+:eq:`euler`
+
 Introduction
 ************
 In this package three landmark-based distances and their 
