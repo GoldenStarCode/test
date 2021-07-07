@@ -87,6 +87,8 @@ Example:
 
 Note: The figure is drawn by *draw_landmarks_trajectory* function of this package.
 
+Remark: Notice argmin points are chosen by the smallest index if there is a tie.
+
 5.3. The minimum distance of a point/set of points from a line segment
 #######################################################################
 
@@ -266,6 +268,8 @@ Also, setting ``argPnts=True`` will return argmin points selected by landmarks:
 
 Figure 1:
    .. image:: https://github.com/GoldenStarCode/tmg/blob/main/detailtraj1.jpg?raw=true
+   
+Remark: Notice argmin points are chosen by the smallest index if there is a tie.
        
 Figure 2: 
    .. image:: https://github.com/GoldenStarCode/tmg/blob/main/detailtraj2.jpg?raw=true
@@ -458,6 +462,8 @@ trjtrypy.visualizations.draw_landmarks_trajectory(landmarks, trajectory, version
 .. image:: https://github.com/GoldenStarCode/tmg/blob/main/traj2.jpg?raw=true
          :width: 600px
          :height: 500px
+         
+Remark: Notice argmin points are chosen by the smallest index if there is a tie.
 
 In signed version the trajectory will be drawn in a directed form. As mentioned in reference distances in end points of the trajectory is not 2-norm, so those distances are shown by dotted line segments in visualization:
 
@@ -468,6 +474,8 @@ In signed version the trajectory will be drawn in a directed form. As mentioned 
 .. image:: https://github.com/GoldenStarCode/tmg/blob/main/traj2direct.jpg?raw=true
    :width: 600px
    :height: 500px    
+
+Remark: Notice argmin points are chosen by the smallest index if there is a tie.
 
 trjtrypy.visualizations.colorcoding
 =======================================
@@ -609,7 +617,7 @@ The minimum distance between a point and any (complicated) piecewise linear curv
    # define a point
    apoint=np.array([[-0.5, -0.5]])
    # define a curve
-   curve=np.array([[-2,2], [-1,2], [-2,1], [-1,0], [-1,1], [0,2], [1,1], [0,1], [0,0], [0,-1], [0,-2], [-1,-1], [1,-1], [2,0]])
+   curve=np.array([[-2,2], [-1,2], [-2,1], [-1,0], [-1,1], [0,2], [1,1], [0,1], [0,0], [0,-1], [0,-2], [-1,-1], [1,-1.5], [2,0]])
 
    # make apoint and curve appropriate for distance function as inputs
    points=apoint
@@ -632,7 +640,7 @@ The minimum distance between a point and any (complicated) piecewise linear curv
    # define a point
    apoint=np.array([[-0.5, -0.5]])
    # define curve1
-   curve1=np.array([[-2,2], [-1,2], [-2,1], [-1,0], [-1,1], [0,2], [1,1], [0,1], [0,0], [0,-1], [0,-2], [-1,-1], [1,-1], [2,0]])
+   curve1=np.array([[-2,2], [-1,2], [-2,1], [-1,0], [-1,1], [0,2], [1,1], [0,1], [0,0], [0,-1], [0,-2], [-1,-1], [1,-1.5], [2,0]])
    # define curve2
    curve2=np.array([[0,0], [2,2], [5,-1], [7,0]])
 
@@ -641,11 +649,11 @@ The minimum distance between a point and any (complicated) piecewise linear curv
    curves=np.array([curve1, curve2], dtype=object)
 
    # compute unsigned distances
-   tt.basedists.distacne(points, curves) # returns array([[0.5       ],
+   tt.basedists.distance(points, curves) # returns array([[0.5       ],
                                          #                [0.70710678]])
 
    # compute signed distances
-   tt.basedists.distacne(points, curves, version='signed') # returns array([[-0.5],
+   tt.basedists.distance(points, curves, version='signed') # returns array([[-0.5],
                                                            #                [ 0. ]]) this is zero because point [-0.5,-0.5] is positioned at the direction of the first segment of curve2
 
 .. [ii] The minimum distance of all points in a set of points from a curve/curves simultaneously:
@@ -669,13 +677,13 @@ The minimum distance of all points in a set of points from a curve simultaneousl
    curves=np.array([curve], dtype=object)
 
    # compute unsigned distance 
-   tt.basedists.distacne(points, curves) # returns array([[7.07106781e-01, 5.00000000e-01, 7.07106781e-01, 7.07106781e-01,
+   tt.basedists.distance(points, curves) # returns array([[7.07106781e-01, 5.00000000e-01, 7.07106781e-01, 7.07106781e-01,
                                          #                 3.53553391e-01, 5.00000000e-01, 5.00000000e-01, 5.00000000e-01,
                                          #                 3.53553391e-01, 3.53553391e-01, 5.00000000e-01, 1.57009246e-16,
                                          #                 7.07106781e-01, 5.00000000e-01, 5.00000000e-01, 7.07106781e-01]])
 
    # compute signed distance 
-   tt.basedists.distacne(points, curves, version='signed') # returns array([[-7.07106781e-01,  0.00000000e+00,  7.07106781e-01,
+   tt.basedists.distance(points, curves, version='signed') # returns array([[-7.07106781e-01,  0.00000000e+00,  7.07106781e-01,
                                                            #                 -7.07106781e-01,  3.53553391e-01,  5.00000000e-01,
                                                            #                 -5.00000000e-01, -5.00000000e-01, -3.53553391e-01,
                                                            #                 -3.53553391e-01,  5.00000000e-01, -1.57009246e-16,
@@ -702,7 +710,7 @@ The minimum distance of all points in a set of points from curves simultaneously
    curves=np.array([curve1, curve2], dtype=object)
 
    # compute unsigned distance 
-   tt.basedists.distacne(points, curves) # returns array([[7.07106781e-01, 5.00000000e-01, 7.07106781e-01, 7.07106781e-01,
+   tt.basedists.distance(points, curves) # returns array([[7.07106781e-01, 5.00000000e-01, 7.07106781e-01, 7.07106781e-01,
                                          #                  3.53553391e-01, 5.00000000e-01, 5.00000000e-01, 5.00000000e-01,
                                          #                  3.53553391e-01, 3.53553391e-01, 5.00000000e-01, 1.57009246e-16,
                                          #                  7.07106781e-01, 5.00000000e-01, 5.00000000e-01, 7.07106781e-01],
@@ -712,7 +720,7 @@ The minimum distance of all points in a set of points from curves simultaneously
                                          #                  2.12132034e+00, 1.06066017e+00, 1.06066017e+00, 7.07106781e-01]])
    
    # compute signed distance 
-   tt.basedists.distacne(points, curves, version='signed') # returns array([[-7.07106781e-01,  0.00000000e+00,  7.07106781e-01,
+   tt.basedists.distance(points, curves, version='signed') # returns array([[-7.07106781e-01,  0.00000000e+00,  7.07106781e-01,
                                                            #                  -7.07106781e-01,  3.53553391e-01,  5.00000000e-01,
                                                            #                  -5.00000000e-01, -5.00000000e-01, -3.53553391e-01,
                                                            #                  -3.53553391e-01,  5.00000000e-01, -1.57009246e-16,
@@ -745,10 +753,10 @@ The minimum distance of a point from a line segment:
    curves = np.array([linesegment], dtype=object)
 
    # compute unsigned distance 
-   tt.basedists.distacne(points, curves) # array([[1.58113883]])
+   tt.basedists.distance(points, curves) # array([[1.58113883]])
 
    # compute signed distance 
-   tt.basedists.distacne(points, curves) # array([[1.58113883]])
+   tt.basedists.distance(points, curves) # array([[1.58113883]])
    
 
 
@@ -772,12 +780,12 @@ The minimum distance of a set of points from a line segment:
 
  
    # compute unsigned distance 
-   tt.basedists.distacne(points, curves) # array([[4.30116263, 4.60977223, 4.94974747, 3.16227766, 3.20156212,
+   tt.basedists.distance(points, curves) # array([[4.30116263, 4.60977223, 4.94974747, 3.16227766, 3.20156212,
                                          #         4.24264069, 1.58113883, 2.12132034, 2.47487373, 2.47487373,
                                          #         0.70710678, 2.12132034, 0.70710678, 0.5       , 0.5       ,
                                          #         0.70710678]])
    # compute signed distance 
-   tt.basedists.distacne(points, curves) # array([[ 4.30116263,  4.60977223,  4.94974747,  3.16227766,  3.20156212,
+   tt.basedists.distance(points, curves) # array([[ 4.30116263,  4.60977223,  4.94974747,  3.16227766,  3.20156212,
                                          #          4.24264069,  1.58113883,  2.12132034,  2.47487373,  2.47487373,
                                          #          0.70710678,  2.12132034, -0.70710678,  0.5       , -0.5       ,
                                          #          0.        ]])
