@@ -7,7 +7,7 @@
 .. math:: e^{i\pi} + 1 = 0
    :label: euler
    
-:eq:`euler`
+:eq: `euler`
 
 Introduction
 ************
