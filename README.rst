@@ -1,11 +1,6 @@
-
-.. math::
-   :nowrap:
-
-   \begin{eqnarray}
-      y    & = & ax^2 + bx + c \nonumber\\
-      f(x) & = & x^2 + 2xy + y^2\nonumber
-   \end{eqnarray}
+======================
+ewrwerweasdasdasdas
+======================
 
 .. contents:: Table of Contents
    :depth: 7
